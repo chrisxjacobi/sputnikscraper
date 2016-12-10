@@ -80,9 +80,9 @@ app.get("/scrape", function(req, res) {
             console.log(result);
 
             var entry = new Article(result);
-            entry.save(function(err, doc) {
-                if (err) {
-                    console.log(err);
+            entry.save(function(error, doc) {
+                if (error) {
+                    console.log(error);
                 } else {
                     console.log(doc);
                 }
@@ -163,7 +163,16 @@ app.post("/articles/:id", function(req, res) {
 
 app.delete("/articles/:id", function(req, res) {
 
-    db.Article.remove({ "_id": req.params.id })
+    Article.update({ "_id": req.params.id }, {$unset: {note:"$oid" }}, function(err, response){
+      if (err) {
+        console.log(err);
+        res.send(err);
+      } else {
+        console.log(response);
+        res.send(response);
+
+      }
+    })
 
 });
 
