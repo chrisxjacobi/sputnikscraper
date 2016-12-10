@@ -9,9 +9,6 @@ var Note = require("./models/Note.js");
 var Article = require("./models/Article.js");
 
 
-
-var request = require("request");
-var cheerio = require("cheerio");
 var Promise = require("bluebird");
 
 mongoose.Promise = Promise;
@@ -28,7 +25,7 @@ app.use(bodyParser.urlencoded({
 app.use(express.static("public"));
 
 // config database with mongoose
-mongoose.connect("mongodb://localhost/week18day3mongoose");
+mongoose.connect("mongodb://root:firsthost1@ds127948.mlab.com:27948/heroku_8tw0kt3t");
 var db = mongoose.connection;
 
 db.on("error", function(error) {
@@ -50,36 +47,40 @@ app.get("/", function(req, res) {
 // A GET request to scrape sputnikmusic
 app.get("/scrape", function(req, res) {
   
-  request("http://http://www.sputnikmusic.com/", function(error, response, html) {
-    
+  // Dependencies:
+
+// Snatches HTML from URLs
+var request = require('request');
+// Scrapes our HTML
+var cheerio = require('cheerio');
+
+console.log("\n***********************************\n" +
+            "sputnik for chris\n" +
+            "\n***********************************\n");
+
+request("http://www.sputnikmusic.com/", function(error, response, html) {
+
     var $ = cheerio.load(html);
+
+    var results = [];
+
+    var tooltips = $("a.tooltip");
+
+    console.log(tooltips.length);
+
     // grabbing links on the sidebar
-    $("a").each(function(i, element) {
+    tooltips.each(function(i, element) {
 
       var result = {};
 
       // Add the text and href of every link, and save them as properties of the result object
-      result.title = $(this).children("a").text();
-      result.link = $(this).children("a").attr("href");
+      result.title = $(this).text();
+      result.link = $(this).attr("href");
 
-      // Using our Article model, create a new entry
-      // This effectively passes the result object to the entry (and the title and link)
-      var entry = new Article(result);
-
-      // Now, save that entry to the db
-      entry.save(function(err, doc) {
-        // Log any errors
-        if (err) {
-          console.log(err);
-        }
-        // Or log the doc
-        else {
-          console.log(doc);
-        }
-      });
-
-    });
+      console.log(result);
+      results.push(result);
   });
+});
   // Tell the browser that we finished scraping the text
   res.send("Scrape Complete");
 });
@@ -132,7 +133,7 @@ app.post("/articles/:id", function(req, res) {
     }
     // Otherwise
     else {
-      // Use the article id to find and update it's note
+      // Use the article id to find and update its note
       Article.findOneAndUpdate({ "_id": req.params.id }, { "note": doc._id })
       // Execute the above query
       .exec(function(err, doc) {
