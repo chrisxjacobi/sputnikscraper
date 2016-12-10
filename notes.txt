@@ -1,3 +1,5 @@
+Server connection address
 "mongodb://root:firsthost1@ds119608.mlab.com:19608/heroku_00lsqnfm"
 
+CMD prompt
 mongo ds119608.mlab.com:19608/heroku_00lsqnfm -u root -p firsthost1
