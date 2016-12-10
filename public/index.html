@@ -11,35 +11,32 @@
 </head>
 
 <body>
-    <div class="container-fluid">
+    <div class="container-fluid col-lg-12">
         <div class="jumbotron text-center">
             <h1>sputnik_scraper</h1>
             <h4>scraping news from sputnikmusic.com</h4>
         </div>
+    </div>
+    <div class="col-lg-6">
         <div id="articles"></div>
         <div id="notes"></div>
     </div>
     <div class="col-lg-6">
-        <div class="input-group">
+        <div class="input-group col-md-6">
             <input type="text" class="form-control" placeholder="add comment">
             <span class="input-group-btn">
         		<button class="btn btn-default" type="button">+</button>
       		</span>
-        </div>
-        <br>
-        <div class="input-group">
+      	</div>
+        <div class="input-group col-md-6">
             <input type="text" class="form-control" placeholder="delete comment">
             <span class="input-group-btn">
         		<button class="btn btn-default" type="button">x</button>
       		</span>
         </div>
-        <!-- /input-group -->
     </div>
-    <!-- /.col-lg-6 -->
-    </div>
-    <!-- /.row -->
-    <script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
-    <script src="app.js"></script>
+        <script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
+        <script src="app.js"></script>
 </body>
 
 </html>
