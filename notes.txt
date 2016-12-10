@@ -1,1 +1,3 @@
-mongodb://heroku_00lsqnfm:2n6onrlahhd0hp1mhj507j3mhq@ds119608.mlab.com:19608/heroku_00lsqnfm
+"mongodb://root:firsthost1@ds119608.mlab.com:19608/heroku_00lsqnfm"
+
+mongo ds119608.mlab.com:19608/heroku_00lsqnfm -u root -p firsthost1

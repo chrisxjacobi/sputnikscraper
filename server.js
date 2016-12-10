@@ -25,7 +25,7 @@ app.use(bodyParser.urlencoded({
 app.use(express.static("public"));
 
 // config database with mongoose
-mongoose.connect("mongodb://root:firsthost1@ds127948.mlab.com:27948/heroku_8tw0kt3t");
+mongoose.connect("mongodb://root:firsthost1@ds119608.mlab.com:19608/heroku_00lsqnfm");
 var db = mongoose.connection;
 
 db.on("error", function(error) {
@@ -34,7 +34,9 @@ db.on("error", function(error) {
 
 // success logging in with mongoose
 db.once("open", function() {
-  console.log("Mongoose connection successful.");
+  console.log("Mongoose connection successful 1 .");
+
+
 });
 
 
@@ -150,6 +152,11 @@ app.post("/articles/:id", function(req, res) {
   });
 });
 
+app.delete("/articles/:id", function (req,res){
+
+    db.Article.remove( {  "_id": req.params.id } ) 
+    
+    });
 
 // Listen on port 3000
 app.listen(3000, function() {
