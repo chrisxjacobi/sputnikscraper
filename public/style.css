@@ -1,0 +1,55 @@
+body {
+	background-color: #7fd367;
+}
+
+
+#container {
+    width: 960px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 5%;
+
+}
+
+#articles {
+    display: inline-block;
+    overflow: auto;
+    width: 60%;
+    height: 700px;
+    font-size: small;
+    font-family: 'Raleway', sans-serif;
+
+
+}
+
+#notes {
+    float: right;
+    width: 30%;
+    font-size: small;
+    font-family: 'Raleway', sans-serif;
+}
+
+textarea, input {
+    display: block;
+    width: 100%;
+    background-color: aliceblue;
+}
+
+input {
+    height: 36px;
+    font-size: 24px;
+}
+
+textarea {
+    height: 200px;
+    font-size: 12px;
+}
+
+#article {
+border: inset;
+}
+
+
+
+
+

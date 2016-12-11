@@ -163,17 +163,30 @@ app.post("/articles/:id", function(req, res) {
 
 app.delete("/articles/:id", function(req, res) {
 
-    Article.update({ "_id": req.params.id }, {$unset: {note:"$oid" }}, function(err, response){
-      if (err) {
-        console.log(err);
-        res.send(err);
-      } else {
-        console.log(response);
-        res.send(response);
+    Article.update({ "_id": req.params.id }, { $unset: { note: "$oid" } }, function(err, response) {
+        if (err) {
+            console.log(err);
+            res.end(err);
+        } else {
+            console.log(response);
+            res.end(response);
 
-      }
-    })
+        }
+    });
 
+    Note.remove({}, function(error, response) {
+        // Log any errors to the console
+        if (error) {
+            console.log(error);
+            res.end(error);
+        }
+        // Otherwise, send the mongojs response to the browser
+        // This will fire off the success function of the ajax request
+        else {
+            console.log(response);
+            res.end(response);
+        }
+    });
 });
 
 // Listen on port 3000

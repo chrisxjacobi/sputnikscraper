@@ -4,41 +4,24 @@
 <head>
     <meta charset="UTF-8">
     <title>week-18-homework</title>
-    <!-- bootstrap -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <!-- materialize -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
     <!-- css style -->
     <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
 
 <body>
-    <div class="container-fluid col-lg-12">
-        <div class="jumbotron text-center">
-            <h1>sputnik_scraper</h1>
-            <h4>scraping news from sputnikmusic.com</h4>
+    <div class="container">
+        <h1>sputnik_scraper</h1>
+        <h4>scraping news from sputnikmusic.com</h4>
+
+        <div class "row"> 
+        <div class="col s6" id="articles"></div>
+        <div class="col s6" id="notes"></div>
         </div>
     </div>
-    <div class="col-lg-6">
-        <div id="articles"></div>
-    </div>
-    <div class="col-lg-6">
-    	<div id="notes"></div>
-    </div>
-    <div class="col-lg-6">
-        <div class="input-group col-md-6">
-            <input type="text" class="form-control" placeholder="add comment">
-            <span class="input-group-btn">
-        		<button class="btn btn-default" type="button">+</button>
-      		</span>
-      	</div>
-        <div class="input-group col-md-6">
-            <input type="text" class="form-control" placeholder="delete comment">
-            <span class="input-group-btn">
-        		<button class="btn btn-default" type="button">x</button>
-      		</span>
-        </div>
-    </div>
-        <script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
-        <script src="app.js"></script>
+    <script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
+    <script src="app.js"></script>
 </body>
 
 </html>
